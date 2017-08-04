@@ -1,7 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-  <h1>
+  <h1 class=text-center>
     Fuck yeah, this is {{title}}
   </h1>
-  <ul *ngFor='let todo of todos'>
-    <li><{{ todo | json }}</li>
-  </ul>
+
+  <table class="table table-bordered">
+    <tr class="active">
+      <th>id</th>
+      <th>title</th>
+      <th>description</th>
+      <th>priority</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+    <tr *ngFor='let todo of todos; let i = index'>
+      <td><{{ i + 1 }}</td>
+      <td><{{ todo.title }}</td>
+      <td><{{ todo.description }}</td>
+      <td><{{ todo.priority }}</td>
+      <td><{{ todo.createdAt }}</td>
+      <td><{{ todo.updatedAt }}</td>
+    </tr>
+  </table>
