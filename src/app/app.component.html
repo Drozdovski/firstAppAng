@@ -12,24 +12,41 @@
       <th>Created At</th>
       <th>Updated At</th>
     </tr>
-    <tr *ngFor='let todo of todos; let i = index'>
+    <tr *ngFor='let todo of todos; let i = index' (click)='editTask(todo);'>
       <td>{{ i + 1 }}</td>
-      <td (click)='selectedTasks[todo.id] = true'>
-        {{ todo.title }}
-        <input type="text" [(ngModel)]='todo.title' [hidden]='!selectedTasks[todo.id]'/>
-      </td>
-      <td (click)='selectedTasks[todo.id] = true'>
-        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.description }}</a>
+      <td>
+        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.title }}</a>
         <div *ngIf='selectedTasks[todo.id]'>
-          <input type="text" [(ngModel)]='todo.description'/>
-          <button (click)='updateTodo(todo); $event.stopPropagation();'>Save</button>
-          <button (click)='selectedTasks[todo.id]=false; $event.stopPropagation();'>Cancel</button>
+          <input type="text" [(ngModel)]='selectedTasks[todo.id].title'/>
         </div>
       </td>
-      <td>{{ todo.priority }}</td>
-      <td>{{ todo.createdAt }}</td>
-      <td>{{ todo.updatedAt }}</td>
-      <td><button (click)="deleteTodo(todo.id);" class="btn btn-danger">del</button></td>
+      <td>
+        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.description }}</a>
+        <div *ngIf='selectedTasks[todo.id]'>
+          <input type="text" [(ngModel)]='selectedTasks[todo.id].description'/>
+        </div>
+      </td>
+      <td>
+        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.priority }}</a>
+        <div *ngIf='selectedTasks[todo.id]'>
+          <input type="number" [(ngModel)]='selectedTasks[todo.id].priority'/>
+        </div>
+      </td>
+      <td>{{ todo.createdAt | date:'medium' }}</td>
+      <td>{{ todo.updatedAt | date:'medium' }}</td>
+      <td>
+        <button *ngIf='!selectedTasks[todo.id]' (click)="deleteTodo(todo.id); $event.stopPropagation();" class="btn btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+        <div *ngIf='selectedTasks[todo.id]'>
+          <button class="btn btn-success" (click)='updateTodo(todo); $event.stopPropagation();'>
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+          <button class="btn btn-warning" (click)='selectedTasks[todo.id]=undefined; $event.stopPropagation();'>
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+      </td>
     </tr>
   </table>
 

@@ -35,11 +35,15 @@ export class AppComponent {
     )
   }
 
+  editTask(todo) {
+    this.selectedTasks[todo.id] = Object.assign({}, todo);
+  }
+
   updateTodo(todo) {
-    this.selectedTasks[todo.id] = false;
-    this.todoService.update(todo.id, todo).subscribe(
+    this.todoService.update(todo.id, this.selectedTasks[todo.id]).subscribe(
       (data) => {
         let todoIndex = this.todos.findIndex((item => item.id == todo.id));
+        this.selectedTasks[todo.id] = undefined;
         this.todos[todoIndex] = data;
       },
       (error) => {
