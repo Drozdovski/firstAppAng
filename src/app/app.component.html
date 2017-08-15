@@ -1,66 +1,74 @@
 <!--The content below is only a placeholder and can be replaced.-->
-  <h1 class=text-center>
-    Fuck yeah, this is {{title}}
-  </h1>
 
-  <table class="table table-bordered">
-    <tr class="active">
-      <th>id</th>
-      <th>title</th>
-      <th>description</th>
-      <th>priority</th>
-      <th>Created At</th>
-      <th>Updated At</th>
-    </tr>
-    <tr *ngFor='let todo of todos; let i = index' (click)='editTask(todo);'>
-      <td>{{ i + 1 }}</td>
-      <td>
-        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.title }}</a>
-        <div *ngIf='selectedTasks[todo.id]'>
-          <input type="text" [(ngModel)]='selectedTasks[todo.id].title'/>
-        </div>
-      </td>
-      <td>
-        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.description }}</a>
-        <div *ngIf='selectedTasks[todo.id]'>
-          <input type="text" [(ngModel)]='selectedTasks[todo.id].description'/>
-        </div>
-      </td>
-      <td>
-        <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.priority }}</a>
-        <div *ngIf='selectedTasks[todo.id]'>
-          <input type="number" [(ngModel)]='selectedTasks[todo.id].priority'/>
-        </div>
-      </td>
-      <td>{{ todo.createdAt | date:'medium' }}</td>
-      <td>{{ todo.updatedAt | date:'medium' }}</td>
-      <td>
-        <button *ngIf='!selectedTasks[todo.id]' (click)="deleteTodo(todo.id); $event.stopPropagation();" class="btn btn-danger">
-          <i class="glyphicon glyphicon-trash"></i>
-        </button>
-        <div *ngIf='selectedTasks[todo.id]'>
-          <button class="btn btn-success" (click)='updateTodo(todo); $event.stopPropagation();'>
-            <i class="glyphicon glyphicon-ok"></i>
-          </button>
-          <button class="btn btn-warning" (click)='selectedTasks[todo.id]=undefined; $event.stopPropagation();'>
-            <i class="glyphicon glyphicon-remove"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div class="bbody">
+    <h1 class=text-center>
+      {{title}}
+    </h1>
 
-  <div class="container">
-    <form (submit)='createTodo();'>
-      <div class="form-group">
-        <input type="text" [(ngModel)]='todo.title' placeholder="title" name='title'>
-      </div>
-      <div class="form-group">
-        <input type="text" [(ngModel)]='todo.description' placeholder="description" name='description'>
-      </div>
-      <div class="form-group">
-        <input type="number" [(ngModel)]='todo.priority' placeholder="priority" name='priority'>
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+    <div class="container">
+      <table class="table table-bordered">
+        <tr class="active">
+          <th>id</th>
+          <th (click) = 'orderBy();'>
+            <a (click)='false'>title</a>
+          </th>
+          <th>description</th>
+          <th>priority</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th></th>
+        </tr>
+        <tr *ngFor='let todo of todos; let i = index' (click)='editTask(todo);'>
+          <td>{{ i + 1 }}</td>
+          <td>
+            <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.title }}</a>
+            <div *ngIf='selectedTasks[todo.id]'>
+              <input type="text" [(ngModel)]='selectedTasks[todo.id].title'/>
+            </div>
+          </td>
+          <td>
+            <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.description }}</a>
+            <div *ngIf='selectedTasks[todo.id]'>
+              <input type="text" [(ngModel)]='selectedTasks[todo.id].description'/>
+            </div>
+          </td>
+          <td>
+            <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.priority }}</a>
+            <div *ngIf='selectedTasks[todo.id]'>
+              <input type="number" [(ngModel)]='selectedTasks[todo.id].priority'/>
+            </div>
+          </td>
+          <td>{{ todo.createdAt | date:'medium' }}</td>
+          <td>{{ todo.updatedAt | date:'medium' }}</td>
+          <td>
+            <button *ngIf='!selectedTasks[todo.id]' (click)="deleteTodo(todo.id); $event.stopPropagation();" class="btn btn-danger">
+              <i class="glyphicon glyphicon-trash"></i>
+            </button>
+            <div *ngIf='selectedTasks[todo.id]'>
+              <button class="btn btn-success" (click)='updateTodo(todo); $event.stopPropagation();'>
+                <i class="glyphicon glyphicon-ok"></i>
+              </button>
+              <button class="btn btn-warning" (click)='selectedTasks[todo.id]=undefined; $event.stopPropagation();'>
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="container">
+      <form (submit)='createTodo();'>
+        <div class="form-group">
+          <input type="text" [(ngModel)]='todo.title' placeholder="title" name='title'>
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]='todo.description' placeholder="description" name='description'>
+        </div>
+        <div class="form-group">
+          <input type="number" [(ngModel)]='todo.priority' placeholder="priority" name='priority'>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
   </div>

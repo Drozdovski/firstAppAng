@@ -1,0 +1,14 @@
+
+table {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/736x/dd/0d/a1/dd0da19d456f6bada39381312a505c5a--decorative-paper-background-paper.jpg);
+  color: #adf442;
+}
+td > a {
+  color: #adf442;
+}
+th, th > a {
+  color: #4a5f82;
+}
+h1 {
+  color: #fff;
+}
