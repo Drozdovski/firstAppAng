@@ -1,14 +1,37 @@
 
 table {
-  background-image: url(https://s-media-cache-ak0.pinimg.com/736x/dd/0d/a1/dd0da19d456f6bada39381312a505c5a--decorative-paper-background-paper.jpg);
-  color: #adf442;
+  background-color: #fff;
+  color: #707070;
 }
 td > a {
-  color: #adf442;
+  color: #707070;
 }
 th, th > a {
-  color: #4a5f82;
+  color: #262626;
+}
+.container-form{
+  margin-top: 30px;
+}
+.container-form, .btn-warning {
+  float: right;
+}
+label {
+  font-size: 15px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
+.form-group > .btn {
+  margin-top: 7px;
+
+}
+.container-form > form > input {
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 17px;
 }
 h1 {
-  color: #fff;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  text-decoration: underline;
 }

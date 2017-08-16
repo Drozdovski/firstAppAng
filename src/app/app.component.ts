@@ -10,8 +10,8 @@ import {HostBinding} from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @HostBinding('style.background-image')
-  backgroundImage:string = 'url(http://orig11.deviantart.net/1614/f/2009/353/9/5/wood_study_3_by_devin_busha.jpg)';
+  @HostBinding('style.background-color')
+  backgroundColor:string = '#f5f5f5';
   title = 'Task-man';
   todos:any = [];
   todo:any = {};
