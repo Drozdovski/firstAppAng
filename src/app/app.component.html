@@ -1,48 +1,49 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
   <div class="bbody">
-    <h1>tasks</h1>
+    <h1>TASKs</h1>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10">
           <table class="table">
-            <tr class="active">
-              <th>id</th>
+            <tr class="ttrr">
+              <th class="table_id">id</th>
               <th (click) = 'orderBy();'>
                 <a (click)='false'>title</a>
               </th>
-              <th>description</th>
-              <th>priority</th>
-              <th>Created At</th>
-              <th>Updated At</th>
-              <th></th>
+              <th class="table_description">description</th>
+              <th class="table_priority">priority</th>
+              <th class="table_buttons"></th>
             </tr>
-            <tr *ngFor='let todo of todos; let i = index' (click)='editTask(todo);'>
-              <td>{{ i + 1 }}</td>
-              <td>
+            <tr *ngFor='let todo of todos; let i = index'>
+              <td class="table_id">{{ i + 1 }}</td>
+              <td class="table_title">
                 <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.title }}</a>
                 <div *ngIf='selectedTasks[todo.id]'>
-                  <input type="text" [(ngModel)]='selectedTasks[todo.id].title'/>
+                  <input type="text" [(ngModel)]='selectedTasks[todo.id].title' class="edit"/>
                 </div>
               </td>
-              <td>
+              <td class="table_description">
                 <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.description }}</a>
                 <div *ngIf='selectedTasks[todo.id]'>
-                  <input type="text" [(ngModel)]='selectedTasks[todo.id].description'/>
+                  <input type="text" [(ngModel)]='selectedTasks[todo.id].description' class="edit"/>
                 </div>
               </td>
-              <td>
+              <td class="table_priority">
                 <a *ngIf='!selectedTasks[todo.id]' (click)='false'>{{ todo.priority }}</a>
                 <div *ngIf='selectedTasks[todo.id]'>
-                  <input type="number" [(ngModel)]='selectedTasks[todo.id].priority'/>
+                  <input type="number" [(ngModel)]='selectedTasks[todo.id].priority' class="edit"/>
                 </div>
               </td>
-              <td>{{ todo.createdAt | date:'medium' }}</td>
-              <td>{{ todo.updatedAt | date:'medium' }}</td>
-              <td>
-                <button *ngIf='!selectedTasks[todo.id]' (click)="deleteTodo(todo.id); $event.stopPropagation();" class="btn btn-danger">
-                  <i class="glyphicon glyphicon-trash"></i>
-                </button>
+              <td class="table_buttons">
+                <div class="show_butt">
+                  <button *ngIf='!selectedTasks[todo.id]' (click)="deleteTodo(todo.id); $event.stopPropagation();" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </button>
+                  <button *ngIf='!selectedTasks[todo.id]' (click)="editTask(todo); $event.stopPropagation();" class="btn btn-info">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </button>
+                </div>
                 <div *ngIf='selectedTasks[todo.id]'>
                   <button class="btn btn-success" (click)='updateTodo(todo); $event.stopPropagation();'>
                     <i class="glyphicon glyphicon-ok"></i>

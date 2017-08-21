@@ -1,7 +1,8 @@
-
 table {
   background-color: #fff;
   color: #707070;
+  table-layout: fixed;
+  box-shadow: 0 0 5px 3px #b8cfd1;
 }
 td > a {
   color: #707070;
@@ -9,14 +10,11 @@ td > a {
 th, th > a {
   color: #262626;
 }
-.container-form{
-  margin-top: 30px;
-}
-.container-form, .btn-warning {
-  float: right;
+.container-form {
+  margin-top: 15px;
 }
 label {
-  font-size: 15px;
+  font-size: 13px;
   margin-top: 3px;
   margin-bottom: 2px;
 }
@@ -27,12 +25,55 @@ label {
 .container-form > form > input {
   border: 0.5px solid #ccc;
   border-radius: 5px;
-  font-size: 17px;
+  font-size: 15px;
+  width: 170px;
 }
 h1 {
-  margin-left: 30px;
+  margin-top: 80px;
+  margin-left: 75px;
   margin-bottom: 30px;
-  text-transform: uppercase;
-  text-decoration: underline;
-  color: #4286f4;
+
+  font-style: italic;
+  color: #c4fbff;
+}
+.table_id {
+  width: 10%;
+}
+.table_title {
+  width: 20%
+}
+.table_description {
+  width: 30%;
+}
+.table_priority {
+  width: 20%;
+}
+.table > tbody > tr > .table_buttons {
+  width: 15%;
+  padding: 3px;
+}
+.table_buttons > .show_butt > .btn, .table_buttons > div > .btn {
+  font-size: 10px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+}
+.table>tbody>tr>td {
+  padding: 12px;
+}
+.show_butt {
+  display: none;
+}
+tr:hover .show_butt {
+  display: block;
+}
+td > div > input {
+  line-height: normal;
+}
+.ttrr {
+  background-color: #42b9e5;
+  color: #fff;
+}
+.ttrr > th, .ttrr > th > a {
+  color: #fff;
 }
